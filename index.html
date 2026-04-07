@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VOID — A Physics Puzzle</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+</head>
+<body>
+
+  <!-- START SCREEN -->
+  <div id="start-screen" class="screen active">
+    <div class="start-inner">
+      <div class="logo-mark">◈</div>
+      <h1 class="game-title">VOID</h1>
+      <p class="game-subtitle">A physics puzzle of precision and momentum</p>
+      <div class="start-instructions">
+        <div class="inst-row"><span class="key">DRAG</span><span>aim your throw</span></div>
+        <div class="inst-row"><span class="key">RELEASE</span><span>launch the orb</span></div>
+        <div class="inst-row"><span class="key">COLLECT</span><span>all fragments to unlock the portal</span></div>
+      </div>
+      <button class="btn-primary" id="start-btn">BEGIN</button>
+      <p class="version-tag">v1.0 — 5 LEVELS</p>
+    </div>
+  </div>
+
+  <!-- GAME SCREEN -->
+  <div id="game-screen" class="screen">
+    <div id="hud">
+      <div class="hud-left">
+        <span class="hud-label">LEVEL</span>
+        <span class="hud-value" id="hud-level">01</span>
+      </div>
+      <div class="hud-center">
+        <span class="hud-label">SCORE</span>
+        <span class="hud-value" id="hud-score">0000</span>
+      </div>
+      <div class="hud-right">
+        <span class="hud-label">THROWS</span>
+        <span class="hud-value" id="hud-throws">00</span>
+      </div>
+    </div>
+    <div id="canvas-wrapper">
+      <canvas id="game-canvas"></canvas>
+      <div id="trajectory-overlay"></div>
+    </div>
+    <div id="bottom-bar">
+      <button class="btn-ghost" id="restart-btn">↺ RESTART</button>
+      <div id="fragment-display">
+        <span class="hud-label">FRAGMENTS</span>
+        <div id="fragment-pips"></div>
+      </div>
+      <button class="btn-ghost" id="menu-btn">⊟ MENU</button>
+    </div>
+  </div>
+
+  <!-- LEVEL COMPLETE SCREEN -->
+  <div id="complete-screen" class="screen">
+    <div class="complete-inner">
+      <div class="complete-decoration">
+        <div class="complete-ring ring-1"></div>
+        <div class="complete-ring ring-2"></div>
+        <div class="complete-ring ring-3"></div>
+        <div class="complete-icon">◈</div>
+      </div>
+      <h2 class="complete-title">LEVEL COMPLETE</h2>
+      <div class="complete-stats">
+        <div class="stat-row">
+          <span class="stat-label">THROWS USED</span>
+          <span class="stat-value" id="stat-throws">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">TIME</span>
+          <span class="stat-value" id="stat-time">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">LEVEL SCORE</span>
+          <span class="stat-value" id="stat-score">—</span>
+        </div>
+      </div>
+      <div class="complete-btns">
+        <button class="btn-ghost" id="retry-btn">↺ RETRY</button>
+        <button class="btn-primary" id="next-btn">NEXT LEVEL →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GAME OVER SCREEN -->
+  <div id="gameover-screen" class="screen">
+    <div class="complete-inner">
+      <div class="complete-icon" style="font-size:3rem;margin-bottom:1rem">✕</div>
+      <h2 class="complete-title">ALL DONE</h2>
+      <p style="color:var(--mid);font-family:var(--mono);font-size:.85rem;margin-bottom:2rem;letter-spacing:.1em">You cleared all 5 levels.</p>
+      <div class="complete-stats">
+        <div class="stat-row">
+          <span class="stat-label">TOTAL SCORE</span>
+          <span class="stat-value" id="final-score">—</span>
+        </div>
+      </div>
+      <button class="btn-primary" id="playagain-btn" style="margin-top:2rem">PLAY AGAIN</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
